@@ -64,7 +64,7 @@ Méthode de paiement: ${paymentMethodText}`
 
   const allImages = [
     product.images.front,
-    product.images.back,
+    ...(product.images.back ? [product.images.back] : []),
     ...(product.images.gallery || [])
   ]
 
@@ -114,7 +114,7 @@ Méthode de paiement: ${paymentMethodText}`
                   className="relative w-full h-full"
                 >
                   <Image
-                    src={selectedGalleryImage || product.images[imageView]}
+                    src={selectedGalleryImage || (imageView === 'back' && product.images.back ? product.images.back : product.images.front)}
                     alt={`${product.name}`}
                     fill
                     className="object-contain p-4 sm:p-6 md:p-8"
@@ -125,39 +125,41 @@ Méthode de paiement: ${paymentMethodText}`
               </AnimatePresence>
             </motion.div>
 
-            {/* Image Toggle */}
-            <div className="flex gap-2 sm:gap-3">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  setImageView('front')
-                  setSelectedGalleryImage(null)
-                }}
-                className={`flex-1 min-h-[48px] p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 transition-all touch-manipulation ${
-                  imageView === 'front' && !selectedGalleryImage
-                    ? 'border-senegal-green bg-senegal-green text-white shadow-lg shadow-senegal-green/30'
-                    : 'border-gray-200 bg-white text-gray-700 hover:border-senegal-green/50 hover:bg-gray-50'
-                }`}
-              >
-                <span className="text-xs sm:text-sm font-semibold">Vue avant</span>
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  setImageView('back')
-                  setSelectedGalleryImage(null)
-                }}
-                className={`flex-1 min-h-[48px] p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 transition-all touch-manipulation ${
-                  imageView === 'back' && !selectedGalleryImage
-                    ? 'border-senegal-green bg-senegal-green text-white shadow-lg shadow-senegal-green/30'
-                    : 'border-gray-200 bg-white text-gray-700 hover:border-senegal-green/50 hover:bg-gray-50'
-                }`}
-              >
-                <span className="text-xs sm:text-sm font-semibold">Vue dos</span>
-              </motion.button>
-            </div>
+            {/* Image Toggle - Only show if back image exists */}
+            {product.images.back && (
+              <div className="flex gap-2 sm:gap-3">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    setImageView('front')
+                    setSelectedGalleryImage(null)
+                  }}
+                  className={`flex-1 min-h-[48px] p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 transition-all touch-manipulation ${
+                    imageView === 'front' && !selectedGalleryImage
+                      ? 'border-senegal-green bg-senegal-green text-white shadow-lg shadow-senegal-green/30'
+                      : 'border-gray-200 bg-white text-gray-700 hover:border-senegal-green/50 hover:bg-gray-50'
+                  }`}
+                >
+                  <span className="text-xs sm:text-sm font-semibold">Vue avant</span>
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    setImageView('back')
+                    setSelectedGalleryImage(null)
+                  }}
+                  className={`flex-1 min-h-[48px] p-3 sm:p-4 rounded-xl sm:rounded-2xl border-2 transition-all touch-manipulation ${
+                    imageView === 'back' && !selectedGalleryImage
+                      ? 'border-senegal-green bg-senegal-green text-white shadow-lg shadow-senegal-green/30'
+                      : 'border-gray-200 bg-white text-gray-700 hover:border-senegal-green/50 hover:bg-gray-50'
+                  }`}
+                >
+                  <span className="text-xs sm:text-sm font-semibold">Vue dos</span>
+                </motion.button>
+              </div>
+            )}
 
             {/* Gallery Thumbnails */}
             {product.images.gallery && product.images.gallery.length > 0 && (
