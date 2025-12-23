@@ -6,8 +6,8 @@ import JerseyPreview from '@/components/JerseyPreview'
 import { ShoppingCart, AlertCircle } from 'lucide-react'
 
 const SIZES = ['S', 'M', 'L', 'XL', 'XXL']
-const BASE_PRICE = 8000 // Prix sans flocage
-const FLOCAGE_PRICE = 10000 // Prix avec flocage
+const BASE_PRICE = 10000 // Prix sans flocage
+const FLOCAGE_PRICE = 12000 // Prix avec flocage
 // Numéro WhatsApp pour les commandes
 const WHATSAPP_NUMBER = '+221 77 698 64 28'
 

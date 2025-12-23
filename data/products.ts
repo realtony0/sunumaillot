@@ -17,8 +17,8 @@ export const products: Product[] = [
     id: 'maillot-blanc',
     name: 'Maillot Domicile',
     color: 'white',
-    basePrice: 8000,
-    flocagePrice: 10000,
+    basePrice: 10000,
+    flocagePrice: 12000,
     images: {
       front: '/blanc_avant.jpeg',
       back: '/blanc_dos.jpeg',
@@ -32,8 +32,8 @@ export const products: Product[] = [
     id: 'maillot-vert',
     name: 'Maillot Extérieur',
     color: 'green',
-    basePrice: 8000,
-    flocagePrice: 10000,
+    basePrice: 10000,
+    flocagePrice: 12000,
     images: {
       front: '/vert_avant.jpeg',
       back: '/vert_dos.jpeg',
