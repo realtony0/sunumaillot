@@ -79,8 +79,8 @@ export const products: Product[] = [
     id: 'blouson-senegal',
     name: 'Blouson Sénégal',
     color: 'green',
-    basePrice: 12000,
-    flocagePrice: 14000,
+    basePrice: 35000,
+    flocagePrice: 37000,
     images: {
       front: '/blousonsn.jpeg',
       gallery: [
