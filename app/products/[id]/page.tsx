@@ -22,6 +22,7 @@ export default function ProductDetailPage() {
   const [playerNumber, setPlayerNumber] = useState('')
   const [imageView, setImageView] = useState<'front' | 'back'>('front')
   const [selectedGalleryImage, setSelectedGalleryImage] = useState<string | null>(null)
+  const [paymentMethod, setPaymentMethod] = useState<'orange-money' | 'wave' | 'livraison' | ''>('')
 
   if (!product) {
     return (
@@ -34,6 +35,16 @@ export default function ProductDetailPage() {
   const currentPrice = hasFlocage ? product.flocagePrice : product.basePrice
 
   const handleOrder = () => {
+    if (!paymentMethod) {
+      alert('Veuillez sélectionner une méthode de paiement')
+      return
+    }
+
+    const paymentMethodText = 
+      paymentMethod === 'orange-money' ? 'Orange Money' :
+      paymentMethod === 'wave' ? 'Wave' :
+      'Paiement à la livraison'
+
     const message = `Bonjour, je souhaite commander un maillot du Sénégal:
     
 - Modèle: ${product.name}
@@ -43,7 +54,8 @@ ${hasFlocage ? '- Avec flocage personnalisé' : '- Sans flocage'}
 ${playerName ? `- Nom: ${playerName}` : ''}
 ${playerNumber ? `- Numéro: ${playerNumber}` : ''}
 
-Prix: ${currentPrice.toLocaleString()} XOF`
+Prix: ${currentPrice.toLocaleString()} XOF
+Méthode de paiement: ${paymentMethodText}`
 
     const phoneNumber = WHATSAPP_NUMBER.replace(/\s/g, '').replace('+', '')
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
@@ -398,6 +410,112 @@ Prix: ${currentPrice.toLocaleString()} XOF`
                 </motion.div>
               )}
             </AnimatePresence>
+
+            {/* Payment Method Selection */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.75 }}
+              className="bg-white border-2 border-gray-200 rounded-2xl sm:rounded-3xl p-5 sm:p-6 hover:border-senegal-green/30 transition-colors"
+            >
+              <label className="block text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wider">
+                Méthode de paiement
+              </label>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => setPaymentMethod('orange-money')}
+                  className={`p-4 rounded-xl border-2 transition-all text-left min-h-[80px] touch-manipulation ${
+                    paymentMethod === 'orange-money'
+                      ? 'border-senegal-green bg-senegal-green/10 shadow-lg'
+                      : 'border-gray-200 bg-gray-50 hover:border-senegal-green/50'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      paymentMethod === 'orange-money'
+                        ? 'border-senegal-green bg-senegal-green'
+                        : 'border-gray-300'
+                    }`}>
+                      {paymentMethod === 'orange-money' && (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className="w-3 h-3 bg-white rounded-full"
+                        />
+                      )}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900 text-sm sm:text-base">Orange Money</div>
+                      <div className="text-xs text-gray-500">Paiement mobile</div>
+                    </div>
+                  </div>
+                </motion.button>
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => setPaymentMethod('wave')}
+                  className={`p-4 rounded-xl border-2 transition-all text-left min-h-[80px] touch-manipulation ${
+                    paymentMethod === 'wave'
+                      ? 'border-senegal-green bg-senegal-green/10 shadow-lg'
+                      : 'border-gray-200 bg-gray-50 hover:border-senegal-green/50'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      paymentMethod === 'wave'
+                        ? 'border-senegal-green bg-senegal-green'
+                        : 'border-gray-300'
+                    }`}>
+                      {paymentMethod === 'wave' && (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className="w-3 h-3 bg-white rounded-full"
+                        />
+                      )}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900 text-sm sm:text-base">Wave</div>
+                      <div className="text-xs text-gray-500">Paiement mobile</div>
+                    </div>
+                  </div>
+                </motion.button>
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => setPaymentMethod('livraison')}
+                  className={`p-4 rounded-xl border-2 transition-all text-left min-h-[80px] touch-manipulation ${
+                    paymentMethod === 'livraison'
+                      ? 'border-senegal-green bg-senegal-green/10 shadow-lg'
+                      : 'border-gray-200 bg-gray-50 hover:border-senegal-green/50'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      paymentMethod === 'livraison'
+                        ? 'border-senegal-green bg-senegal-green'
+                        : 'border-gray-300'
+                    }`}>
+                      {paymentMethod === 'livraison' && (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className="w-3 h-3 bg-white rounded-full"
+                        />
+                      )}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900 text-sm sm:text-base">À la livraison</div>
+                      <div className="text-xs text-gray-500">Paiement cash</div>
+                    </div>
+                  </div>
+                </motion.button>
+              </div>
+            </motion.div>
 
             {/* Order Button */}
             <motion.button

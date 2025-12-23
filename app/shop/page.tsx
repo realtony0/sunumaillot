@@ -17,10 +17,21 @@ export default function Shop() {
   const [hasFlocage, setHasFlocage] = useState(false)
   const [playerName, setPlayerName] = useState('')
   const [playerNumber, setPlayerNumber] = useState('')
+  const [paymentMethod, setPaymentMethod] = useState<'orange-money' | 'wave' | 'livraison' | ''>('')
 
   const currentPrice = hasFlocage ? FLOCAGE_PRICE : BASE_PRICE
 
   const handleOrder = () => {
+    if (!paymentMethod) {
+      alert('Veuillez sélectionner une méthode de paiement')
+      return
+    }
+
+    const paymentMethodText = 
+      paymentMethod === 'orange-money' ? 'Orange Money' :
+      paymentMethod === 'wave' ? 'Wave' :
+      'Paiement à la livraison'
+
     const message = `Bonjour, je souhaite commander un maillot du Sénégal:
     
 - Couleur: ${selectedColor === 'green' ? 'Vert' : 'Blanc'}
@@ -29,7 +40,8 @@ ${hasFlocage ? '- Avec flocage personnalisé' : '- Sans flocage'}
 ${playerName ? `- Nom: ${playerName}` : ''}
 ${playerNumber ? `- Numéro: ${playerNumber}` : ''}
 
-Prix: ${currentPrice.toLocaleString()} XOF`
+Prix: ${currentPrice.toLocaleString()} XOF
+Méthode de paiement: ${paymentMethodText}`
 
     const phoneNumber = WHATSAPP_NUMBER.replace(/\s/g, '').replace('+', '')
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
@@ -238,6 +250,107 @@ Prix: ${currentPrice.toLocaleString()} XOF`
                 avec flocage ne sont pas remboursables. Veuillez vérifier attentivement vos informations 
                 avant de commander.
               </p>
+            </div>
+
+            {/* Payment Method Selection */}
+            <div className="bg-white/10 border-2 border-white/20 rounded-2xl p-5 sm:p-6">
+              <label className="block text-sm font-semibold text-white mb-4 uppercase tracking-wider">
+                Méthode de paiement
+              </label>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => setPaymentMethod('orange-money')}
+                  className={`p-4 rounded-xl border-2 transition-all text-left min-h-[80px] touch-manipulation ${
+                    paymentMethod === 'orange-money'
+                      ? 'border-senegal-green bg-senegal-green/20 shadow-lg'
+                      : 'border-white/30 bg-white/5 hover:border-white/50'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      paymentMethod === 'orange-money'
+                        ? 'border-senegal-green bg-senegal-green'
+                        : 'border-white/50'
+                    }`}>
+                      {paymentMethod === 'orange-money' && (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className="w-3 h-3 bg-white rounded-full"
+                        />
+                      )}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-white text-sm sm:text-base">Orange Money</div>
+                      <div className="text-xs text-white/70">Paiement mobile</div>
+                    </div>
+                  </div>
+                </motion.button>
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => setPaymentMethod('wave')}
+                  className={`p-4 rounded-xl border-2 transition-all text-left min-h-[80px] touch-manipulation ${
+                    paymentMethod === 'wave'
+                      ? 'border-senegal-green bg-senegal-green/20 shadow-lg'
+                      : 'border-white/30 bg-white/5 hover:border-white/50'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      paymentMethod === 'wave'
+                        ? 'border-senegal-green bg-senegal-green'
+                        : 'border-white/50'
+                    }`}>
+                      {paymentMethod === 'wave' && (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className="w-3 h-3 bg-white rounded-full"
+                        />
+                      )}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-white text-sm sm:text-base">Wave</div>
+                      <div className="text-xs text-white/70">Paiement mobile</div>
+                    </div>
+                  </div>
+                </motion.button>
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => setPaymentMethod('livraison')}
+                  className={`p-4 rounded-xl border-2 transition-all text-left min-h-[80px] touch-manipulation ${
+                    paymentMethod === 'livraison'
+                      ? 'border-senegal-green bg-senegal-green/20 shadow-lg'
+                      : 'border-white/30 bg-white/5 hover:border-white/50'
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
+                      paymentMethod === 'livraison'
+                        ? 'border-senegal-green bg-senegal-green'
+                        : 'border-white/50'
+                    }`}>
+                      {paymentMethod === 'livraison' && (
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          className="w-3 h-3 bg-white rounded-full"
+                        />
+                      )}
+                    </div>
+                    <div>
+                      <div className="font-semibold text-white text-sm sm:text-base">À la livraison</div>
+                      <div className="text-xs text-white/70">Paiement cash</div>
+                    </div>
+                  </div>
+                </motion.button>
+              </div>
             </div>
 
             {/* Order Button */}
