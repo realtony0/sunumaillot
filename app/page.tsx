@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { ArrowRight, Trophy, Users, Flag, Sparkles, Star, ShoppingBag } from 'lucide-react'
+import { ArrowRight, Trophy, Users, Flag, Sparkles, Star, ShoppingBag, Clock, Shirt } from 'lucide-react'
 import { products } from '@/data/products'
 
 export default function Home() {
@@ -370,6 +370,137 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Coming Soon Announcement */}
+      <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-br from-senegal-green/10 via-senegal-yellow/5 to-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.1, 0.15, 0.1],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="absolute top-10 right-10 w-72 h-72 bg-senegal-green/10 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.1, 0.15, 0.1],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: 'easeInOut',
+              delay: 2,
+            }}
+            className="absolute bottom-10 left-10 w-72 h-72 bg-senegal-yellow/10 rounded-full blur-3xl"
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-8 sm:mb-12"
+          >
+            <motion.div
+              initial={{ scale: 0 }}
+              whileInView={{ scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, type: 'spring' }}
+              className="inline-flex items-center px-4 py-2 bg-senegal-green/20 border-2 border-senegal-green/30 rounded-full mb-4"
+            >
+              <Clock className="w-5 h-5 text-senegal-green mr-2" />
+              <span className="text-sm font-bold text-gray-900">Bientôt Disponible</span>
+            </motion.div>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-light mb-4 sm:mb-6 text-gray-900 tracking-tight">
+              🎉 Nouveautés à Venir
+            </h2>
+            <p className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto">
+              De nouveaux produits arrivent bientôt !
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+            {/* Maillots Rétros */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              whileHover={{ y: -8, boxShadow: '0 15px 30px rgba(0, 133, 63, 0.2)' }}
+              className="bg-white rounded-3xl border-2 border-senegal-green/20 p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all"
+            >
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-senegal-green/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Shirt className="w-6 h-6 sm:w-7 sm:h-7 text-senegal-green" />
+                </div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-light mb-2 text-gray-900">
+                    Maillots Rétros
+                  </h3>
+                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                    Découvrez bientôt notre collection de maillots rétros du Sénégal. 
+                    Revivez les moments emblématiques de l'histoire du football sénégalais.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-4 pt-4 border-t border-gray-100">
+                <span className="inline-flex items-center px-3 py-1 bg-senegal-green/10 text-senegal-green rounded-full text-xs font-semibold">
+                  Prochainement
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Blousons */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              whileHover={{ y: -8, boxShadow: '0 15px 30px rgba(252, 209, 22, 0.2)' }}
+              className="bg-white rounded-3xl border-2 border-senegal-yellow/20 p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all"
+            >
+              <div className="flex items-start gap-4 mb-4">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-senegal-yellow/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Shirt className="w-6 h-6 sm:w-7 sm:h-7 text-senegal-yellow" />
+                </div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-light mb-2 text-gray-900">
+                    Blousons
+                  </h3>
+                  <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+                    Les blousons officiels du Sénégal seront bientôt disponibles. 
+                    Restez au chaud tout en affichant votre soutien aux Lions de la Teranga.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-4 pt-4 border-t border-gray-100">
+                <span className="inline-flex items-center px-3 py-1 bg-senegal-yellow/10 text-senegal-yellow rounded-full text-xs font-semibold">
+                  Prochainement
+                </span>
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-8 sm:mt-12 text-center"
+          >
+            <p className="text-gray-600 text-sm sm:text-base">
+              Suivez-nous pour être informé en premier de la disponibilité de ces nouveaux produits !
+            </p>
+          </motion.div>
         </div>
       </section>
 
