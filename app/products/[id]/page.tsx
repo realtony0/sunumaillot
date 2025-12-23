@@ -290,7 +290,8 @@ Méthode de paiement: ${paymentMethodText}`
               </div>
             </motion.div>
 
-            {/* Flocage Option */}
+            {/* Flocage Option - Only show for maillots and retros, not for blousons */}
+            {product.category !== 'blouson' && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -381,6 +382,7 @@ Méthode de paiement: ${paymentMethodText}`
                 )}
               </AnimatePresence>
             </motion.div>
+            )}
 
             {/* Shipping Info */}
             <motion.div

@@ -80,7 +80,7 @@ export const products: Product[] = [
     name: 'Blouson Sénégal',
     color: 'green',
     basePrice: 35000,
-    flocagePrice: 37000,
+    flocagePrice: 35000, // Pas de flocage disponible sur les blousons
     images: {
       front: '/blousonsn.jpeg',
       gallery: [
