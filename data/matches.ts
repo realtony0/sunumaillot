@@ -25,28 +25,28 @@ export interface Prediction {
 }
 
 // Matchs de poule du Sénégal - CAN 2025
-// Dates estimées (à ajuster selon le calendrier officiel)
+// Groupe D : Sénégal, RD Congo, Bénin, Botswana
 export const matches: Match[] = [
   {
     id: 'match-1',
-    opponent: 'À déterminer',
-    date: '2025-01-13',
-    time: '20:00',
+    opponent: 'Botswana',
+    date: '2025-12-23',
+    time: '16:00',
     status: 'upcoming',
     isActive: true, // Premier match actif
   },
   {
     id: 'match-2',
-    opponent: 'À déterminer',
-    date: '2025-01-17',
-    time: '17:00',
+    opponent: 'RD Congo',
+    date: '2025-12-27',
+    time: '16:00',
     status: 'upcoming',
     isActive: false,
   },
   {
     id: 'match-3',
-    opponent: 'À déterminer',
-    date: '2025-01-21',
+    opponent: 'Bénin',
+    date: '2025-12-30',
     time: '20:00',
     status: 'upcoming',
     isActive: false,
