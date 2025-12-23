@@ -147,7 +147,9 @@ export default function PredictPage() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 className={`p-4 sm:p-6 rounded-2xl border-2 transition-all ${
-                  isActive
+                  match.status === 'finished'
+                    ? 'border-senegal-green/30 bg-senegal-green/5 shadow-md'
+                    : isActive
                     ? 'border-senegal-green bg-senegal-green/5 shadow-lg'
                     : 'border-gray-200 bg-gray-50 opacity-60'
                 }`}
@@ -169,6 +171,12 @@ export default function PredictPage() {
                         <Clock className="w-4 h-4" />
                         {match.time}
                       </div>
+                      {match.status === 'finished' && match.score && (
+                        <div className="flex items-center gap-2 font-bold text-senegal-green">
+                          <span>Score final:</span>
+                          <span>🇸🇳 {match.score.senegal} - {match.score.opponent} {match.opponent}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -178,7 +186,11 @@ export default function PredictPage() {
                         <span>{count} prédictions</span>
                       </div>
                     </div>
-                    {isActive ? (
+                    {match.status === 'finished' ? (
+                      <span className="px-3 py-1 bg-senegal-green/20 text-senegal-green rounded-full text-sm font-semibold border border-senegal-green/30">
+                        Terminé
+                      </span>
+                    ) : isActive ? (
                       <span className="px-3 py-1 bg-senegal-green text-white rounded-full text-sm font-semibold">
                         Actif
                       </span>
