@@ -32,8 +32,12 @@ export const matches: Match[] = [
     opponent: 'Botswana',
     date: '2025-12-23',
     time: '16:00',
-    status: 'upcoming',
-    isActive: true, // Premier match actif
+    status: 'finished',
+    score: {
+      senegal: 2,
+      opponent: 1,
+    },
+    isActive: false, // Match terminé
   },
   {
     id: 'match-2',
@@ -41,7 +45,7 @@ export const matches: Match[] = [
     date: '2025-12-27',
     time: '16:00',
     status: 'upcoming',
-    isActive: false,
+    isActive: true, // Match suivant actif
   },
   {
     id: 'match-3',
