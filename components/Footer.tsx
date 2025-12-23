@@ -50,6 +50,17 @@ export default function Footer() {
         </div>
         <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-senegal-green/20 text-center text-xs sm:text-sm text-gray-600">
           <p>© 2025 Sunu Maillot - Tous droits réservés</p>
+          <p className="mt-2">
+            Site conçu par{' '}
+            <a
+              href="https://wa.me/221774992742"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-senegal-green hover:text-senegal-green/80 font-semibold transition-colors underline"
+            >
+              mmb
+            </a>
+          </p>
         </div>
       </div>
     </footer>
