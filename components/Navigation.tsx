@@ -41,7 +41,7 @@ export default function Navigation() {
                 whileHover={{ scale: 1.02 }}
                 className="text-lg sm:text-xl font-semibold text-gray-900"
               >
-                sunumaillot
+                Sunu Maillot
               </motion.div>
             </Link>
 

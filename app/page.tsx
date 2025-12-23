@@ -110,7 +110,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extrabold mb-6 sm:mb-8 text-transparent bg-clip-text bg-gradient-to-r from-senegal-green via-senegal-yellow to-senegal-green px-4 tracking-tight"
             >
-              sunumaillot
+              Sunu Maillot
             </motion.h1>
             
             <motion.p

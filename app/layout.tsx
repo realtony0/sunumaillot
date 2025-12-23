@@ -4,8 +4,8 @@ import Navigation from '@/components/Navigation'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'sunumaillot - Maillot Officiel du Sénégal',
-  description: 'sunumaillot - Maillot officiel du Sénégal pour la Coupe d\'Afrique des Nations. Personnalisez votre maillot du Sénégal',
+  title: 'Sunu Maillot - Maillot Officiel du Sénégal',
+  description: 'Sunu Maillot - Maillot officiel du Sénégal pour la Coupe d\'Afrique des Nations. Personnalisez votre maillot du Sénégal',
 }
 
 export default function RootLayout({

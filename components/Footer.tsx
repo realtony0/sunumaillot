@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           <div>
-            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">sunumaillot</h3>
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-3 sm:mb-4">Sunu Maillot</h3>
             <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">
               Maillot officiel du Sénégal pour la Coupe d'Afrique des Nations
             </p>
@@ -49,7 +49,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-senegal-green/20 text-center text-xs sm:text-sm text-gray-600">
-          <p>© 2025 sunumaillot - Tous droits réservés</p>
+          <p>© 2025 Sunu Maillot - Tous droits réservés</p>
         </div>
       </div>
     </footer>
